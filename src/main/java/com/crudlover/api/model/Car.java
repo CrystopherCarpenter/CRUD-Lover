@@ -2,7 +2,7 @@ package com.crudlover.api.model;
 
 import java.util.Date;
 
-import com.crudlover.api.dto.CarsDTO;
+import com.crudlover.api.dto.CarDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,7 +36,7 @@ public class Car {
     @Column(length = 20, nullable = false)
     private int anoModelo;
 
-    public Car(CarsDTO data) {
+    public Car(CarDTO data) {
         this.modelo = data.modelo();
         this.fabricante = data.fabricante();
         this.dataFabricacao = data.dataFabricacao();
