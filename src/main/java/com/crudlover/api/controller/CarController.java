@@ -53,8 +53,11 @@ public class CarController {
     }
 
     @PutMapping("/{id}")
-    public void update(@PathVariable long id, @RequestBody @Valid CarDTO req) {
-        service.update(id, req);
+    public ResponseEntity<Car> update(@PathVariable long id, @RequestBody @Valid CarDTO req) {
+        var car = service.update(id, req);
+
+        return (car != null) ? ResponseEntity.ok().body(car)
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
     @DeleteMapping("/{id}")

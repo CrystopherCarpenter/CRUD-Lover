@@ -30,8 +30,8 @@ public class CarService {
         return repository.findById(id).map(car -> car).orElse(null);
     }
 
-    public void update(long id, CarDTO req) {
-        repository.findById(id).map(car -> {
+    public Car update(long id, CarDTO req) {
+        return repository.findById(id).map(car -> {
             car.setModelo(req.modelo());
             car.setFabricante(req.fabricante());
             car.setDataFabricacao(req.dataFabricacao());
@@ -39,7 +39,7 @@ public class CarService {
             car.setAnoModelo(req.anoModelo());
 
             return repository.save(car);
-        });
+        }).orElse(null);
     }
 
     public void deleteById(long id) {
